@@ -42,6 +42,7 @@ export async function sendNotification(args: NotifySend) {
         },
       },
       {
+        timeout: 7000,
         headers: {
           Authorization: `Bearer ${process.env.WHATSAPP_TOKEN}`,
         },
