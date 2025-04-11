@@ -181,7 +181,8 @@ export async function getStockHoldings(
         });
 
         // Getting profit
-        const profit = (buyingPrice / stock.number_stocks - currentprice) / buyingPrice * 100;
+        // const profit = (buyingPrice / stock.number_stocks - currentprice) / buyingPrice * 100;
+        const profit = (currentprice - (buyingPrice / stock.number_stocks)) / (buyingPrice / stock.number_stocks) * 100
         if (stock.number_stocks > 0) {
           stockHoldings.push({
             tokenId: stock.tokenId,
