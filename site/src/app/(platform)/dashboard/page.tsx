@@ -473,9 +473,12 @@ const DashBoardPage = () => {
             </TableHeader>
             <TableBody>
               {portfolio.map((stock) => {
-                const buyPricePerShare = stock.buy_price / stock.shares;
-                const currentPricePerShare = stock.current_price / stock.shares;
-                const profitPercent = (stock.profit / stock.buy_price) * 100;
+                if (stock.shares === 0) {
+                  return null;
+                }
+                const buyPricePerShare = stock.buy_price;
+                const currentPricePerShare = stock.current_price;
+                const profitPercent = stock.profit;
 
                 return (
                   <TableRow key={stock.symbol}>
