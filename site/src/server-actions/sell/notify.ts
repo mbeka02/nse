@@ -17,7 +17,7 @@ export async function sendNotification(args: NotifySend) {
       );
       throw new MyError(Errors.INVALID_SETUP);
     }
-
+    console.log(`[${Date.now()}] Sending notification`);
     const response = await axios.post(
       `https://graph.facebook.com/v22.0/${process.env.WHATSAPP_PHONE_ID}/messages`,
       {
@@ -42,7 +42,6 @@ export async function sendNotification(args: NotifySend) {
         },
       },
       {
-        timeout: 7000,
         headers: {
           Authorization: `Bearer ${process.env.WHATSAPP_TOKEN}`,
         },
@@ -55,5 +54,7 @@ export async function sendNotification(args: NotifySend) {
       console.log(err.response?.data);
     }
     console.log("Error sending notification", err);
+  } finally {
+    console.log(`[${Date.now()}] notify function finshed running`);
   }
 }
