@@ -269,9 +269,8 @@ const DashBoardPage = () => {
     
     console.log("Signing transfer of coinst transaction");
     const signedTx = await transferTokenTx.freezeWithSigner(signer);
-    const transactionID = await signedTx.executeWithSigner(signer);
-    const response = await transactionID.getReceiptWithSigner(signer);
-    console.log("Transaction signed and sent", response);
+    await signedTx.executeWithSigner(signer);
+    console.log("Done signing");
   };
 
   if (!isConnected) {
