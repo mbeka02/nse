@@ -172,7 +172,7 @@ export async function getStockHoldings(
         if (price === undefined) {
           throw new MyError(Errors.NOT_GET_STOCK_PRICES);
         }
-        const currentprice = price.price * stock.number_stocks;
+        const currentprice = price.price;
 
         // Getting buy price
         const buyingPrice = await getInitialInvestment({
